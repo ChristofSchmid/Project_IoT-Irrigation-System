@@ -16,17 +16,15 @@
 #define SPI_MISO 12
 #define SPI_SCK 13
 
-#define FREQUENCY 433.0
+#define FREQUENCY 915.0
 #define BANDWIDTH 125.0
 #define SPREADING_FACTOR 9
 #define CODING_RATE 7
 #define OUTPUT_POWER 10
 #define PREAMBLE_LEN 8
 #define GAIN 0
-#define SX1278_SYNC_WORD 0x12
 
-
-SX1278 radio = new Module(LORA_CS, DIO0, LORA_RST, DIO1);
+SX1276 radio = new Module(LORA_CS, DIO0, LORA_RST, DIO1);
 
 AHT10 humiditySensor;
 int sensorPin = A2; // select the input pin for the potentiometer
@@ -40,8 +38,8 @@ void setup()
     Serial.print(F("Initializing ... "));
 
     //int state = radio.begin();
-    int state = radio.begin(FREQUENCY, BANDWIDTH, SPREADING_FACTOR, CODING_RATE, SX1278_SYNC_WORD, OUTPUT_POWER, PREAMBLE_LEN, GAIN);
-    if (state == RADIOLIB_ERR_NONE)
+    int state = radio.begin(FREQUENCY, BANDWIDTH, SPREADING_FACTOR, CODING_RATE, SX127X_SYNC_WORD, OUTPUT_POWER, PREAMBLE_LEN, GAIN);
+    if (state == ERR_NONE)
     {
         Serial.println(F("success!"));
     }
@@ -78,8 +76,7 @@ void loop()
     {
         String str;
         int state = radio.receive(str);
-              Serial.println(state);
-        if (state == RADIOLIB_ERR_NONE)
+        if (state == ERR_NONE)
         {
             Serial.println(F("success!"));
             Serial.print(F("[SX1278] Data:\t\t\t"));
