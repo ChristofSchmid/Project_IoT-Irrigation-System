@@ -1,0 +1,319 @@
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 374
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 388
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 403
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 417
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 432
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 446
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 461
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 475
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 490
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 504
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 519
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 533
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 547
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 562
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 576
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 591
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 605
+start READ SENSORS SelfReadState: 0 Timer: 605
+3:40:53
+[Memory - free: 61328   allocated: 49840]
+Sending message:
+PREPARE
+[Memory - free: 61280   allocated: 49888]
+Sending message:
+RELAY
+wait lora callback
+Callback time out.
+[Memory - free: 61232   allocated: 49936]
+Sending message:
+Soil1
+wait lora callback
+[Memory[Memory - free: 61200   allocated: 49968]
+Sending message:
+Soil2
+wait lora callback
+[Memory [Memory - free: 61104   allocated: 50064]
+Sending message:
+Soil3
+wait lora callback
+[Memory [Memory - free: 61072   allocated: 50096]
+Sending message:
+Soil4
+wait lora callback
+Callback time out.
+[Memory - free: 61072   allocated: 50096]
+Sending message:
+Soil5
+wait lora callback
+Callback time out.
+[Memory - free: 61072   allocated: 50096]
+Sending message:
+Soil6
+wait lora callback
+Callback time out.
+Display time out
+Changing display
+[[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 35
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 49
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 64
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 78
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 93
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 107
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 122
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 136
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 151
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 165
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 180
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 194
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 209
+gate_working request loop running
+TRY gate_working request loop running
+[Errno 110] ETIMEDOUT
+gate_working main loop running
+start show all
+Display time out
+Changing display
+start READ SENSORS SelfReadState: 0 Timer: 223
+gate_working request loop running
+TRY gate_working request loop running
+Got a connection from ('192.168.15.184', 520.8,en;q=0.7,es;q=0.6\r\n\r\n'
+gate_working request loop running
+TRY gate_working request loop running
+Got a connection from ('192.168.15.184', 52027n from ('192.168.15.184', 52026)
+Content = b''
+gate_working request loop running
+TRY gate_working request loop running
+Got a connection from ('192.168.15.184', 52087)
+Traceback (most recent call last):
+  File "main.py", line 2, in <module>
+  File "<string>", line 24, in <module>
+  File "<string>", line 20, in main
+  File "lora_node.py", line 43, in working
+  File "lora_node.py", line 180, in gate_working
+  File "lora_node.py", line 140, in gate_working
+KeyboardInterrupt: 
+MicroPython v1.10 on 2019-01-25; ESP32 module with ESP32
+Type "help()" for more information.
+>>> 
+
+
+Update_time	Relay	Soil1	Soil2	Soil3	Soil4	Soil5	Soil6
+2:9:46	NULL	HA:84.21% T:12.84C H:-62% B:-74%	HA:66.65% T:13.58C H:-52% B:-79%	HA:68.51% T:13.11C H:-54% B:-79%	NULL	NULL	NULL
+2:19:46	NULL	HA:84.09% T:12.81C H:-62% B:-73%	HA:66.76% T:13.47C H:-52% B:-78%	HA:68.45% T:13.09C H:-54% B:-79%	NULL	NULL	NULL
+2:30:1	NULL	HA:84.79% T:12.43C H:-62% B:-73%	HA:67.97% T:12.95C H:-52% B:-78%	HA:69.63% T:12.58C H:-54% B:-78%	NULL	NULL	NULL
+2:40:16	NULL	HA:86.91% T:11.77C H:-62% B:-73%	HA:70.87% T:12.07C H:-52% B:-77%	HA:72.30% T:11.87C H:-55% B:-78%	NULL	NULL	NULL
+2:50:16	NULL	HA:86.49% T:11.56C H:-62% B:-73%	HA:70.31% T:12.23C H:-52% B:-78%	HA:71.66% T:11.71C H:-54% B:-78%	NULL	NULL	NULL
+3:0:31	NULL	HA:86.84% T:11.83C H:-62% B:-72%	HA:70.68% T:12.20C H:-52% B:-76%	HA:71.76% T:12.02C H:-55% B:-78%	NULL	NULL	NULL
+3:10:46	NULL	HA:87.34% T:11.26C H:-63% B:-72%	HA:72.37% T:11.48C H:-52% B:-76%	HA:72.91% T:11.33C H:-55% B:-77%	NULL	NULL	NULL
+3:20:46	NULL	HA:87.23% T:10.96C H:-63% B:-71%	HA:71.58% T:11.34C H:-52% B:-77%	HA:72.60% T:11.04C H:-55% B:-77%	NULL	NULL	NULL
+3:30:47	NULL	HA:87.85% T:11.23C H:-62% B:-71%	HA:71.48% T:11.70C H:-52% B:-76%	HA:73.02% T:11.39C H:-55% B:-77%	NULL	NULL	NULL
+3:40:53	NULL	HA:87.79% T:11.44C H:-63% B:-71%	HA:71.83% T:11.78C H:-52% B:-76%	HA:72.96% T:11.62C H:-55% B:-76%	NULL	NULL	NULL
