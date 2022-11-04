@@ -1,4 +1,6 @@
 
+#print(open('./lora_node.py','rU').read())
+
 from machine import Pin
 import time
 import config_lora
@@ -15,6 +17,7 @@ except:
 class Lora_Gate:
 
     def __init__(self, name, lora, ip):
+        print("lora_gate init starting") 
         self.name = name
         self.lora = lora
         self.sensor_adc = "NULL"
@@ -24,15 +27,20 @@ class Lora_Gate:
         self.ip = ip
         self.node_list = Lora_Node_List()
         self.DisplayTimerFlag = 0
+        self.read_sensors = 0
         
 
     #模式配置
     def working(self):
         print(self.node_list.list)
+        print("self.show start") 
         self.show_all_status(self.node_list)
         print("MODE_GATE")
+        print("on.receive start") 
         self.lora.onReceive(self.on_gate_receiver)
+        print("receive start") 
         self.lora.receive()
+        print("gate working start") 
         self.gate_working()
         pass
     
@@ -50,30 +58,36 @@ class Lora_Gate:
             ntptime.settime()
         except:
             self.lora.show_text_wrap('NTP time wrong , please reboot.')
-        self.sendMessage("BEGIAN")
+        self.sendMessage("BEGIN")
         onoff = "OFF"
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.bind(('', 80))
         s.listen(5)
         #设置accept阻塞时间
-        s.settimeout(600)
+        s.settimeout(5) #600s on socket
         last_time = 0
+        disp_time = 0
         relay_common = 0
 
         while True:
+            print("gate_working main loop running") 
             now_time = time.time()
-            disp_time = time.time()
-            
-            #if now_time - disp_time > 30 and self.DisplayTimerFlag == 1:
-              #self.show_all_status(self.node_list)
+            if now_time - disp_time > 5 and self.DisplayTimerFlag == 1:
+              print("start show all")
+              disp_time = now_time
+              self.show_all_status(self.node_list)
               #continue
-            
-            if now_time - last_time > 60 or relay_common == 1:
-                last_time = now_time
-                relay_common = 0
+              print("start READ SENSORS SelfReadState: " + str(self.read_sensors) + " Timer: " + str(now_time - last_time) )
+              #time.sleep(5)
+            if now_time - last_time > 600 or self.read_sensors == 1:
+                print("start READ SENSORS SelfReadState: " + str(self.read_sensors) + " Timer: " + str(now_time - last_time) )
+                #time.sleep(5)
+                
+                last_time = now_time 
+                self.read_sensors = 0
 
                 tm = time.localtime()
-                t_hour = (tm[3] + 2) % 24
+                t_hour = (tm[3] + 1) % 24
                 t_min = tm[4]
                 t_sec = tm[5]
                 time_str = str(t_hour) + ':' + str(t_min) + ':' + str(t_sec)
@@ -85,6 +99,7 @@ class Lora_Gate:
 
                 last_node_status = {"Relay":"NULL", "Soil1":"NULL", "Soil2": "NULL", "Soil3":"NULL", "Soil4":"NULL", "Soil5":"NULL", "Soil6":"NULL", "Update_time":"NULL"}
                 last_node_status["Update_time"] = time_str
+
                 
                 self.DisplayTimerFlag = 1
                 temp_msg = "RELAY" + onoff
@@ -113,15 +128,17 @@ class Lora_Gate:
 
                 self.show_all_status(self.node_list)         
 
-                #阻塞lora，等待webserver请求
+                #阻塞lora，等待webserver请求 Block lora, waiting for webserver request
                 self.sendMessage("OVER")
                 print("Prepare accept")
 
-            while True :
+            while True:
+                print("gate_working request loop running") 
                 try:
+                    print("TRY gate_working request loop running") 
                     conn, addr = s.accept()
                     print('Got a connection from %s' % str(addr))
-                    request = conn.recv(1024)
+                    request = conn.recv(2048) #1024
                     request = str(request)
                     print('Content = %s' % request)
                     if request.find("favicon") != -1:
@@ -135,32 +152,38 @@ class Lora_Gate:
                     led_on = request.find('/?led=on')
                     led_off = request.find('/?led=off')
                     led_water = request.find('/?led=water')
+                    led_readsensor = request.find('/?led=readsensor')
                     if led_on == 6:
                         print('RELAY ON')
                         onoff = 'ON'
-                        relay_common = 1
+                        self.read_sensors = 1
                     if led_off == 6:
                         print('RELAY OFF')
                         onoff = 'OFF'
-                        relay_common = 1
+                        self.read_sensors = 1
                     if led_water == 6:
                         print('RELAY WATER')
                         onoff = 'WATER'
-                        relay_common = 1
+                        self.read_sensors = 0
+                    if led_readsensor == 6:
+                        print('READ SENSORS')
+                        self.read_sensors = 1
+                                             
                     response = webserver.web_page(self.node_list.list)
                     conn.send('HTTP/1.1 200 OK\n')
                     conn.send('Content-Type: text/html\n')
                     conn.send('Connection: close\n\n')
                     conn.sendall(response)
                     conn.close()
-                    break
+                    #break #go back to gate_working main loop
                 except Exception as e:
                     print(e)
+                    break #go back to gate_working main loop
 
 
     #网关模式回调
     def on_gate_receiver(self, payload):    
-        print("On gate receive") 
+        print("On gate receive starting") 
         rssi = self.lora.packetRssi()
         
         try:
@@ -192,7 +215,7 @@ class Lora_Gate:
         print("Display time out")
         now = config_lora.millisecond()
         while(1):
-            if config_lora.millisecond() - now > 3000:
+            if config_lora.millisecond() - now > 5000:
                 print("Changing display")
                 break
         
@@ -244,25 +267,23 @@ class Lora_Gate:
         elif soil5 != "NULL" :
             soil5 = soil5[soil5.find('H:'):]
             soil5 = soil5 + soil5[soil5.find('B:'):]
-            
         
+        #while self.DisplayTimerFlag == 1:
+        self.lora.show_text(self.ip,0,0,clear_first = True)
+        self.lora.show_text('R1:'+ node_List.list[9]['Relay'],0,10,clear_first = False)
+        self.lora.show_text('S1:'+ soil0,0,20,clear_first = False)
+        self.lora.show_text('S2:'+ soil1,0,30,clear_first = False)
+        self.lora.show_text('S3:'+ soil2,0,40,clear_first = False)
+        self.lora.show_text(node_List.list[9]['Update_time'],0,50,clear_first = False, show_now = True, hold_seconds = 1)
         
-        while self.DisplayTimerFlag == 1:
-          self.lora.show_text(self.ip,0,0,clear_first = True)
-          self.lora.show_text('R1:'+ node_List.list[9]['Relay'],0,10,clear_first = False)
-          self.lora.show_text('S1:'+ soil0,0,20,clear_first = False)
-          self.lora.show_text('S2:'+ soil1,0,30,clear_first = False)
-          self.lora.show_text('S3:'+ soil2,0,40,clear_first = False)
-          self.lora.show_text(node_List.list[9]['Update_time'],0,50,clear_first = False, show_now = True, hold_seconds = 1)
-        
-          self.lora_timeout1()
+        self.lora_timeout1()
           
-          self.lora.show_text(self.ip,0,0,clear_first = True)
-          self.lora.show_text('R1:'+ node_List.list[9]['Relay'],0,10,clear_first = False)
-          self.lora.show_text('S4:'+ soil3,0,20,clear_first = False)
-          self.lora.show_text('S5:'+ soil4,0,30,clear_first = False)
-          self.lora.show_text('S6:'+ soil5,0,40,clear_first = False) 
-          self.lora.show_text(node_List.list[9]['Update_time'],0,50,clear_first = False, show_now = True, hold_seconds = 1)         
+        self.lora.show_text(self.ip,0,0,clear_first = True)
+        self.lora.show_text('R1:'+ node_List.list[9]['Relay'],0,10,clear_first = False)
+        self.lora.show_text('S4:'+ soil3,0,20,clear_first = False)
+        self.lora.show_text('S5:'+ soil4,0,30,clear_first = False)
+        self.lora.show_text('S6:'+ soil5,0,40,clear_first = False) 
+        self.lora.show_text(node_List.list[9]['Update_time'],0,50,clear_first = False, show_now = True, hold_seconds = 1)         
           #self.DisplayTimerFlag = 0
           
           
@@ -273,5 +294,7 @@ class Lora_Node_List:
         self.list = []
         for i in range(10):
             self.list.append({"Relay":"default", "Soil1":"default", "Soil2":"default", "Soil3":"default", "Soil4":"default", "Soil5":"default", "Soil6":"default","Update_time":"00:00:00"})
+
+
 
 
