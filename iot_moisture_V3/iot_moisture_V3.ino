@@ -2,7 +2,7 @@
 #include "I2C_AHT10.h"
 #include <Wire.h>
 
-#define NODENAME "Soil1"
+#define NODENAME "Soil2"
 
 #define DIO0 2
 #define DIO1 6
@@ -16,7 +16,7 @@
 #define SPI_MISO 12
 #define SPI_SCK 13
 
-#define FREQUENCY 433.0
+#define FREQUENCY 434.0
 #define BANDWIDTH 125.0
 #define SPREADING_FACTOR 9
 #define CODING_RATE 7
